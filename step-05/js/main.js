@@ -12,7 +12,9 @@ var turnReady;
 console.log(Date.now() + ' main 2');
 var pcConfig = {
   'iceServers': [{
-    'urls': 'stun:stun.l.google.com:19302'
+    'urls': 'http://35.154.95.206:3478/',
+    'username': 'test',
+    'password': 'test'
   }]
 };
 
@@ -160,7 +162,7 @@ var constraints = {
 
 console.log(Date.now() + ' Getting user media with constraints', constraints);
 
-if (location.hostname !== 'localhost') {
+if (location.hostname !== 'localhost1') {
   console.log(Date.now() + ' main 23');
   requestTurn(
     'https://computeengineondemand.appspot.com/turn?username=41784574&key=4080218913'
@@ -279,6 +281,7 @@ function requestTurn(turnURL) {
           'credential': turnServer.password
         });
         turnReady = true;
+		alert(turnServer);
       }
     };
     xhr.open('GET', turnURL, true);
